@@ -1,78 +1,51 @@
-
 <template>
-  <div>
-
-
-<!--   <button v-on:click="show = !show">
-    Toggle
-  </button> -->
-  <transition name="slide-fade">
-    <div v-if="show">
-
-        <b-form @submit="onSubmit">
-
-      <b-form-input v-model="text1"
-                    type="text"
-                    placeholder="username">
-      </b-form-input>
-      <p></p>
-
-      <b-form-input v-model="text2"
-                    type="password"
-                    placeholder="password">
-       </b-form-input>
-      <p></p>
-
-      <b-button type="submit" variant="primary">Submit</b-button>
-      <b-button type="reset" variant="secondary">Reset</b-button>
-
-    </b-form>
-    </div>
-  </transition>
-
-  </div>
+  <v-layout column  class="login">
+    <v-flex xs6 offset-xs3>
+      <v-toolbar flat dense class="cyan" dark>
+        <v-toolbar-title>Sign in</v-toolbar-title>
+      </v-toolbar>
+      <br>
+      <br>
+        <form name="tab-tracker-form" autocomplete="off"   @submit.prevent="enviar(email,password)" >
+          <v-text-field label="Email" v-model="email"></v-text-field>
+          <br>
+          <v-text-field label="Password" type="password" v-model="password" autocomplete="new-password" ></v-text-field>
+          <br>
+          <div class="danger-alert" v-html="error" />
+          <br>
+          <v-btn dark class="cyan"  type="submit">Login</v-btn>
+        </form>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
-  export default {
-    components: {
+export default {
+  data () {
+    return {
+      email: '',
+      password: '',
+      error: null
+    }
+  },
+  methods: {
+    async register () {
     },
-    name: 'Login',
-    data () {
-      return {
-        show: false
-      }
-    },
-    mounted () {
-      this.show = true
+    enviar (email, password) {
+      this.$http.post('https://localhost:3000/', {email, password}).then(function (response) {
+        // console.log(response.data + 'ok post')
+        console.log('ok post')
+      }, function (response) {
+        // si falla post
+        console.log('fallo en post')
+      })
     }
   }
+}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-
-
- div{
-
-  margin-top: 10%;
-  margin-left: 30%;
-  margin-right: 30%;
- }
-
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
-.slide-fade-enter-active {
-  transition: all .3s ease;
+.login{
+  padding-top: 10%;
 }
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateX(10px);
-  opacity: 0;
-}
-
 </style>

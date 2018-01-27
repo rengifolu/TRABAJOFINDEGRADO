@@ -1,63 +1,66 @@
 <template>
-  <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
 
-    <b-navbar toggleable="md" type="dark" variant="info" disableAutohide="true">
+  <v-app>
+<!--     para que salga menu responsive
+ --><!--     <v-navigation-drawer >
+      <v-list>
+        <v-list-tile
+          v-for="item in menuItems"
+          :key="item.title"
+          :to="item.link">
+          <v-list-tile-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>{{ item.title }}</v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer> -->
+    <v-toolbar dark class="cyan">
+      <v-toolbar-side-icon
+        @click.stop="sideNav = !sideNav"
+        class="hidden-sm-and-up "></v-toolbar-side-icon>
+      <v-toolbar-title>
+        <router-link to="/" tag="span" style="cursor: pointer">RRHH</router-link>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-xs-only">
+        <v-btn
+          flat
+          v-for="item in menuItems"
+          :key="item.title"
+          :to="item.link">
+          <v-icon left dark>{{ item.icon }}</v-icon>
+          {{ item.title }}
+        </v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
+    <main>
+      <router-view></router-view>
+    </main>
+  </v-app>
 
-      <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-
-      <b-navbar-brand href="/">RR-HH</b-navbar-brand>
-
-      <b-collapse is-nav id="nav_collapse">
-
-        <b-navbar-nav>
-         <b-nav-item to="/" exact>Home</b-nav-item>
-         <b-nav-item to="/Presentacion" exact>Presentacion</b-nav-item>
-          <b-nav-item to="/AboutUs" exact>About Us</b-nav-item>
-        </b-navbar-nav>
-
-        <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto">
-
-<!--           <b-nav-form>
-            <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search"/>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-          </b-nav-form> -->
-
-          <b-nav-item-dropdown text="Lang" right>
-            <b-dropdown-item href="#">ES</b-dropdown-item>
-            <b-dropdown-item href="#">EN</b-dropdown-item>
-          </b-nav-item-dropdown>
-
-          <b-nav-item-dropdown right>
-            <!-- Using button-content slot -->
-            <template slot="button-content">
-              <em>User</em>
-            </template>
-            <b-dropdown-item to="/Login">Profile</b-dropdown-item>
-            <b-dropdown-item to="/Signout">Signout</b-dropdown-item>
-            
-          </b-nav-item-dropdown>
-        </b-navbar-nav>
-
-      </b-collapse>
-    </b-navbar>
-
-<!-- navbar-1.vue -->
-
-
-    <router-view/>
-  </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  export default {
+    data () {
+      return {
+        sideNav: true,
+        menuItems: [
+          { icon: 'home', title: 'Home', link: '/' },
+          { icon: 'person', title: 'Profile', link: '/AboutUs' },
+          { icon: 'face', title: 'Sign up', link: '/SignOut' },
+          { icon: 'lock_open', title: 'Sign in', link: '/Login' }
+        ]
+      }
+    }
+  }
 </script>
 
 <style>
 #app {
 }
+
+
 
 </style>
