@@ -9,7 +9,8 @@ import 'vuetify/dist/vuetify.min.css'
 
 Vue.config.productionTip = false
 Vue.use(VueResource) // para post
-Vue.http.headers.common['Access-Control-Allow-Origin'] = 'http://localhost:8080/#/Login,http://localhost:8080/#/Login'
+Vue.http.headers.common['Access-Control-Allow-Origin'] = 'http://localhost:8080'
+Vue.http.headers.common['Access-Control-Request-Method'] = '*'
 Vue.use(Vuetify)
 
 /* eslint-disable no-new */
