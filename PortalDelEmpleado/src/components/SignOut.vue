@@ -1,5 +1,5 @@
 <template>
-  <v-layout column  class="login">
+  <v-layout column>
     <v-flex xs6 offset-xs3>
       <v-toolbar flat dense class="cyan" dark>
         <v-toolbar-title>Sign up</v-toolbar-title>
@@ -36,7 +36,4 @@ export default {
 </script>
 
 <style scoped>
-.login{
-  padding-top: 10%;
-}
 </style>

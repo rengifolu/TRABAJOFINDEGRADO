@@ -4,7 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Presentacion from '@/components/Presentacion'
 import Login from '@/components/Login'
 import AboutUs from '@/components/AboutUs'
-import SignOut from '@/components/SignOut'
+import Register from '@/components/Register'
 
 Vue.use(Router)
 
@@ -31,9 +31,9 @@ export default new Router({
       component: AboutUs
     },
     {
-      path: '/SignOut',
-      name: 'SignOut',
-      component: SignOut
+      path: '/Register',
+      name: 'Register',
+      component: Register
     }
   ]
 })
