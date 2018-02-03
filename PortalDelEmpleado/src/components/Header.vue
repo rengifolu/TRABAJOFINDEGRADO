@@ -9,12 +9,21 @@
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-xs-only">
       <v-btn
+        v-if="!$store.state.isUserLoggedIn"
         flat
         v-for="item in menuItems"
         :key="item.title"
         :to="item.link">
         <v-icon left dark>{{ item.icon }}</v-icon>
         {{ item.title }}
+      </v-btn>
+      <v-btn
+        v-if="$store.state.isUserLoggedIn"
+        flat
+        dark
+        @click="logOut">
+        <v-icon left dark>lock</v-icon>
+        Log Out
       </v-btn>
     </v-toolbar-items>
   </v-toolbar>
@@ -31,6 +40,16 @@ export default {
         { icon: 'face', title: 'Register', link: '/Register' },
         { icon: 'lock_open', title: 'Login', link: '/Login' }
       ]
+    }
+  },
+  methods: {
+    logOut () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      // y regresamos a pagina prinipal
+      this.$router.push({
+        name: 'Hello'
+      })
     }
   }
 }

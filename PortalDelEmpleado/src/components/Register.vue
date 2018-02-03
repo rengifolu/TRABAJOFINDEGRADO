@@ -36,7 +36,7 @@ import AuthenticationService from '@/services/AuthenticationService'
 export default {
   data () {
     return {
-      email: 'abc',
+      email: 'andrelujan7@gmail.com',
       password: 'pechaman',
       error: null
     }
@@ -46,10 +46,12 @@ export default {
     // desde ahi con Api.js donde esta axios
     async registro () { // asyn creo que conecta con axios por que sino no uncionaba
       try {
-        await AuthenticationService.register({ // almacena en response
+        const response = await AuthenticationService.register({ // almacena en response
           email: this.email,                                    // email de axios con this.email de v-model
           password: this.password
         })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
       } catch (error) {
         this.error = error.response.data.error
       }

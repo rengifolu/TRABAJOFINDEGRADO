@@ -1,5 +1,5 @@
 <template>
-    <v-layout column >
+    <v-layout column>
       <v-flex xs6 offset-xs3>
         <div class="white elevation-2">
           <v-toolbar flat dense class="cyan" dark>
@@ -46,9 +46,15 @@ export default {
     // desde ahi con Api.js donde esta axios
     async login () { // asyn creo que conecta con axios por que sino no uncionaba
       try {
-        await AuthenticationService.login({ // almacena en response
+        const response = await AuthenticationService.login({ // almacena en response
           email: this.email,                                    // email de axios con this.email de v-model
           password: this.password
+        })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
+        // y vamos a pagina de persona que se ha logado si es admin o empleado
+        this.$router.push({
+          name: 'Employee'
         })
       } catch (error) {
         this.error = error.response.data.error

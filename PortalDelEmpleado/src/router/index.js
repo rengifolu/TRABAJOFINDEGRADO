@@ -5,6 +5,8 @@ import Presentacion from '@/components/Presentacion'
 import Login from '@/components/Login'
 import AboutUs from '@/components/AboutUs'
 import Register from '@/components/Register'
+import Admin from '@/components/Admin'
+import Employee from '@/components/Employee'
 
 Vue.use(Router)
 
@@ -34,6 +36,16 @@ export default new Router({
       path: '/Register',
       name: 'Register',
       component: Register
+    },
+    {
+      path: '/Admin',
+      name: 'Admin',
+      component: Admin
+    },
+    {
+      path: '/Employee',
+      name: 'Employee',
+      component: Employee
     }
   ]
 })
