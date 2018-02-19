@@ -3,9 +3,7 @@
     <v-app>
       <page-header></page-header>
       <main>
-        <v-container fluid>
-         <router-view></router-view>
-       </v-container>
+      <router-view></router-view>
       </main>
     </v-app>
   </div>
@@ -24,8 +22,8 @@ export default {
 }
 </script>
 
-<style>
-#app {
+<style scoped>
+*{
+  width: 100%;
 }
-
 </style>

@@ -14,6 +14,7 @@
             <v-text-field
              name="input-1"
              label ="Password"
+             type= password
              v-model="password">
             </v-text-field>
             <br>
@@ -66,5 +67,9 @@ export default {
   color:red;
 }
 
+.flex.offset-xs3 {
+    margin-top: 7%;
+    margin-left: 25%;
+}
 
 </style>

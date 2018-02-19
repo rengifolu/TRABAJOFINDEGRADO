@@ -1,11 +1,11 @@
 module.exports = {
   port: process.env.PORT || 8081,
   db: {
-    database: process.env.DB_NAME || 'portaldeempleados',
-    user: process.env.DB_USER || 'portaldeempleados',
-    password: process.env.DB_PASS || 'portaldeempleados',
+    database: process.env.DB_NAME || 'portalDeEmpleados',
+    user: process.env.DB_USER || 'postgres',
+    password: process.env.DB_PASS || 'root',
     options: {
-      dialect: process.env.DIALECT || 'sqlite',
+      dialect: process.env.DIALECT || 'postgres',
       host: process.env.HOST || 'localhost',
       storage: './portaldeempleados.sqlite'
     }
