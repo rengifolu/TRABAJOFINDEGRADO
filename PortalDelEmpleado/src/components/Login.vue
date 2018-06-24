@@ -39,6 +39,7 @@ export default {
     return {
       email: '',
       password: '',
+      puesto: '',
       error: null
     }
   },
@@ -54,9 +55,15 @@ export default {
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
         // y vamos a pagina de persona que se ha logado si es admin o empleado
-        this.$router.push({
-          name: 'Admin'
-        })
+        if (response.data.user.puesto === 'Administrador') {
+          this.$router.push({
+            name: 'Admin'
+          })
+        } else {
+          this.$router.push({
+            name: 'Employee'
+          })
+        }
       } catch (error) {
         this.error = error.response.data.error
       }

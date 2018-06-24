@@ -9,7 +9,7 @@
           <img src="static/imagen1.jpg" >
         </v-list-tile-avatar>
         <v-list-tile-content>
-          <v-list-tile-title>Nombre de Admin</v-list-tile-title>
+          <v-list-tile-title>Nombre Empleado</v-list-tile-title>
         </v-list-tile-content>
         <v-list-tile-action>
           <v-btn icon @click.native.stop="mini = !mini">
@@ -41,11 +41,12 @@
       return {
         drawer: true,
         items: [
-          { title: 'Home', icon: 'dashboard' },
-          { title: 'Modificar', icon: 'question_answer' },
-          { title: 'Crear', icon: 'question_answer' },
-          { title: 'Acerca de', icon: 'dashboard' },
-          { title: 'Ayuda', icon: 'help' }
+          { icon: 'home', title: 'Mis Herramientas' },
+          { icon: 'alarm', title: 'Mi Información Personal' },
+          { icon: 'money', title: 'Mis Datos Economicos' },
+          { icon: 'domain', title: 'Mi Puesto De Trabajo' },
+          { icon: 'alarm', title: 'Mi Tiempo De Trabajo', link: 'paginasEmpleados/tiempoTrabajo' },
+          { icon: 'info', title: 'Información' }
         ],
         mini: true,
         right: null

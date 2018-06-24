@@ -43,7 +43,7 @@ export default new Router({
       component: Admin
     },
     {
-      path: '/Employee',
+      path: '/empleados/Employee',
       name: 'Employee',
       component: Employee
     }

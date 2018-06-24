@@ -13,7 +13,7 @@ app.use(cors())
 
 require('./routes')(app)
 
-sequelize.sync({force: true}).then(() => {
+sequelize.sync().then(() => { // {force: true}  para resetear base de datos
   app.listen(process.env.Port || 8081)
   console.log(`Server iniciado en puerto ${config.port}`)
 })
