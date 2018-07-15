@@ -62,19 +62,19 @@ export default {
    margin-top: 50px;
    width: 100%;
    height: 800px;
-   // background-color: red;
+   /* background-color: red; */
 }
 .cartas{
   width: 83%;
-  //height: 800px;
+  /* height: 800px; */
   float: right;
-  //background-color: green;
+  /* background-color: green; */
   padding-right: 15%;
 }
 .barra{
   width: 16%;
   height: 800px;
-  //background-color: blue;
+  /* background-color: blue; */
 
 }
 

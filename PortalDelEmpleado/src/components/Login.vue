@@ -59,7 +59,8 @@ export default {
           this.$router.push({
             name: 'Admin'
           })
-        } else {
+        }
+        if (response.data.user.puesto !== 'Administrador') {
           this.$router.push({
             name: 'Employee'
           })

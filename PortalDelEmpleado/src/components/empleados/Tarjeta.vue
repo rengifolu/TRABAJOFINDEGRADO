@@ -1,13 +1,12 @@
 <template>
 <div class="tarjeta" >
-  <v-card v-for="empleado in empleados"
-  :key="empleado.id" class="floating-box">
+  <v-card class="floating-box">
      <v-card-media src="static/imagen1.jpg" height="200px" >
      </v-card-media>
      <v-card-title primary-title>
        <div>
-         <h3 class="headline mb-0">{{empleado.nombre}}</h3>
-         <div>{{empleado.email}}<br>{{empleado.puesto}}<br>{{empleado.notas}}</div>
+         <h3 class="headline mb-0"></h3>
+         <div>{{'empleado.nombre'}}<br><br></div>
        </div>
      </v-card-title>
      <v-card-actions>
@@ -21,16 +20,16 @@
 </template>
 
 <script>
-import AuthenticationService from '@/services/AuthenticationService'
+import EmployeesService from '@/services/EmployeesService'
 export default {
   data () {
     return {
-      empleados: null
+      empleado: null
     }
   },
   async mounted () {
-    this.empleados = (await AuthenticationService.empleados()).data
-    console.log(this.empleados)
+    this.empleado = (await EmployeesService.empleados()).data
+    console.log('aqui carajo', this.empleado)
   }
 }
 </script>
@@ -45,11 +44,7 @@ export default {
 .floating-box {
     float: left;
     width: 30%;
-    /* height: 105px; */ 
     margin: 20px;
     border: 3px solid grey;
 }
-
-
-/* http://lorempixel.com/350/230/ */
 </style>

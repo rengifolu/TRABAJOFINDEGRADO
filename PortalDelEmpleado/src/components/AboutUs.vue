@@ -2,7 +2,6 @@
   <v-carousel hide-controls>
     <v-carousel-item v-for="(item,i) in items" v-bind:src="item.src" :key="i" ></v-carousel-item>
   </v-carousel>
-  </div>
 </template>
 
 <script>

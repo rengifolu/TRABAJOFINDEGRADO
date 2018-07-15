@@ -17,12 +17,12 @@ module.exports = {
       const user = await User.create(req.body)
       const userJson = user.toJSON()
       res.send({
-         user: userJson,
-         token: jwtSignUser(userJson)
+        user: userJson,
+        token: jwtSignUser(userJson)
       })
     } catch (error) {
-      res.status(400).send({  // Error 400: Solicitud incorrecta
-         error: 'este email ya esta en uso'
+      res.status(400).send({ /* Error 400: Solicitud incorrecta */
+        error: 'este email ya esta en uso'
       })
     }
   },
@@ -32,15 +32,15 @@ module.exports = {
   async login (req, res) {
     try {
       const {email, password} = req.body // se envia esto
-      const user = await User.findOne({  // busca en BBDD
+      const user = await User.findOne({ /* busca en BBDD */
         where: {
-          email: email                   // localiza su email
+          email: email /* localiza su email */
         }
       })
       console.log(user.toJSON())
-      if (!user) {                       // si no encuentra email
-        return res.status(403).send({    // Error 403: Acceso denegado/prohibido
-           error: 'la informacion de login es incorrecta'
+      if (!user) { /* si no encuentra email */
+        return res.status(403).send({ /* Error 403: Acceso denegado/prohibido */
+          error: 'la informacion de login es incorrecta'
         })
       }
 
@@ -51,19 +51,18 @@ module.exports = {
       // si no es valido
       if (!isPasswordValid) {
         return res.status(403).send({ // Error 403: Acceso denegado/prohibido
-           error: 'la informacion de password es incorrecta'
+          error: 'la informacion de password es incorrecta'
         })
       }
       // si ha llegado aqui
       const userJson = user.toJSON()
-      console.log('ati' + userJson)
       res.send({
-         user: userJson,
-         token: jwtSignUser(userJson)
+        user: userJson,
+        token: jwtSignUser(userJson)
       })
     } catch (error) {
-       res.status(500).send({        // 500 Internal Server Error
-         error: 'ha ocurrido un error intentando login'
+      res.status(500).send({ /* 500 Internal Server Error */
+        error: 'ha ocurrido un error intentando login'
       })
     }
   },
@@ -71,6 +70,7 @@ module.exports = {
   ****            COMPROBACIONES PARA DEVOLVER EMPLEADOS                    ***
   ****************************************************************************/
   async empleados (req, res) {
+    console.log('aqui r', req.query.search)
     try {
       let empleado = null
       const search = req.query.search
@@ -94,7 +94,7 @@ module.exports = {
       res.send(empleado)
     } catch (err) {
       res.status(500).send({
-        error: 'an error has occured trying to fetch the songs'
+        error: 'an error has occured trying to fetch the empleados'
       })
     }
   }

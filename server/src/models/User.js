@@ -5,7 +5,7 @@ function hashPassword (user, options) {
   const SALT_FACTOR = 8
 
   if (!user.changed('password')) {
-    return;
+    return
   }
 
   return bcrypt
@@ -19,36 +19,36 @@ function hashPassword (user, options) {
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', { // nombre del DataTypes User
     nombre: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     empresa: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     puesto: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     telefono: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     notas: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     email: {
       type: DataTypes.STRING,
       unique: true
     },
-    password:DataTypes.STRING
+    password: DataTypes.STRING
   }, {
     hooks: {
-      // beforeCreate: hashPassword,   Eliminar beforeCreate y beforeUpdate de los ganchos en User.js. Hay error donde la contraseña comparada es hash dos veces﻿
+      // beforeCreate: hashPassword,   Eliminar beforeCreate y beforeUpdate de los ganchos en User.js. Hay error donde la contraseña comparada es hash dos veces
       // beforeUpdate: hashPassword,
       beforeSave: hashPassword
     }
   })
 
   User.prototype.comparePassword = function (password) {
-     return bcrypt.compareAsync(password, this.password)
-   }
+    return bcrypt.compareAsync(password, this.password)
+  }
 
   return User
 }

@@ -11,8 +11,3 @@ export default {
     return Api().get('empleados')
   }
 }
-
-// uthenticationService.register({
-//  email:'andrelujan7@gmail.com',
-//  password: 'pechaman'
-// })

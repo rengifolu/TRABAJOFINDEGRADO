@@ -9,7 +9,7 @@
           <img src="static/imagen1.jpg" >
         </v-list-tile-avatar>
         <v-list-tile-content>
-          <v-list-tile-title>Nombre Empleado</v-list-tile-title>
+          <v-list-tile-title>Nombre de Empleado</v-list-tile-title>
         </v-list-tile-content>
         <v-list-tile-action>
           <v-btn icon @click.native.stop="mini = !mini">
@@ -21,7 +21,7 @@
   </v-toolbar>
   <v-list class="pt-0" dense>
     <v-divider></v-divider>
-    <v-list-tile v-for="item in items" :key="item.title" @click="">
+    <v-list-tile v-for="item in items" :key="item.title" @click="peru">
       <v-list-tile-action>
         <v-icon>{{ item.icon }}</v-icon>
       </v-list-tile-action>
@@ -41,15 +41,19 @@
       return {
         drawer: true,
         items: [
-          { icon: 'home', title: 'Mis Herramientas' },
-          { icon: 'alarm', title: 'Mi Información Personal' },
-          { icon: 'money', title: 'Mis Datos Economicos' },
-          { icon: 'domain', title: 'Mi Puesto De Trabajo' },
-          { icon: 'alarm', title: 'Mi Tiempo De Trabajo', link: 'paginasEmpleados/tiempoTrabajo' },
-          { icon: 'info', title: 'Información' }
+          { title: 'Mis Herramientas', icon: 'home' },
+          { title: 'Mi Información Personal', icon: 'alarm' },
+          { title: 'Mis Datos Economicos', icon: 'money' },
+          { title: 'Mi Puesto De Trabajo', icon: 'domain' },
+          { title: 'Mi Tiempo De Trabajo', icon: 'alarm' },
+          { title: 'Información', icon: 'info' }
         ],
         mini: true,
         right: null
+      }
+    },
+    methods: {
+      peru () {
       }
     }
   }
