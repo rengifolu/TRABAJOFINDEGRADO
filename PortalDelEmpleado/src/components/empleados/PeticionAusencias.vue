@@ -1,11 +1,12 @@
 <template>
-
+<div>
 <v-layout row wrap>
     <v-date-picker
       v-model="date"
       full-width
       landscape
       class="mt-3"
+      color="cyan accent-4"
     ></v-date-picker>
    <v-spacer></v-spacer>
     <v-flex xs11 sm5>
@@ -25,11 +26,12 @@
         <v-text-field
           slot="activator"
           v-model="time"
-          label="Picker in menu"
+          label="Hora de inicio de auscencia"
           prepend-icon="access_time"
           readonly
         ></v-text-field>
         <v-time-picker
+         color="cyan accent-4"
           v-if="menu2"
           v-model="time"
           @change="$refs.menu.save(time)"
@@ -37,11 +39,19 @@
       </v-menu>
     </v-flex>
 </v-layout>
-  
+<v-divider></v-divider>
+<v-divider></v-divider>
+<v-divider></v-divider>
+<lista></lista>
+</div>
 </template>
 
 <script>
+import Lista from './Lista.vue'
 export default {
+  components: {
+    Lista
+  },
   data () {
     return {
       date: '2018-03-02',

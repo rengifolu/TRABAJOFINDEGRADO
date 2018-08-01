@@ -62,7 +62,10 @@ export default {
         }
         if (response.data.user.puesto !== 'Administrador') {
           this.$router.push({
-            name: 'Employee'
+            name: 'Employee',
+            params: {
+              identificador: response.data.user.id
+            }
           })
         }
       } catch (error) {

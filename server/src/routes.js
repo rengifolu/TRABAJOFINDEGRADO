@@ -6,7 +6,7 @@ const EmployeesController = require('./controllers/EmployeesController')
 module.exports = (app) => {
   app.post('/register',
     RegisterControllerPolicy.register,
-    AuthenticationController.register)
+    EmployeesController.register)
 
   app.post('/login',
     AuthenticationController.login)
@@ -14,6 +14,6 @@ module.exports = (app) => {
   app.get('/empleados',
     EmployeesController.empleados)
 
-  app.get('/empleado',
+  app.get('/empleado/:id',
     EmployeesController.empleado)
 }

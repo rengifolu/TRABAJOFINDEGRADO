@@ -11,7 +11,7 @@
 
         <img src="http://www.imer.mx/wp-content/uploads/sites/36/logo_inai.png" alt="Vue logo"/>
         <h1>RR-HH</h1>
-        <h4>Design</h4>
+        <h4>Design by Diego Lujan R.</h4>
         <a href="https://github.com/rengifolu" class="button">Source on GitHub</a>
     </video-bg>
   <!-- If you want to add content here, a slot is waiting! -->

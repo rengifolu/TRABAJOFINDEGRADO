@@ -18,7 +18,7 @@
           <v-card-title
             class="grey lighten-4 py-4 title"
           >
-            Crear Usuario
+            Crear Administrador
           </v-card-title>
           <v-container grid-list-sm class="pa-4">
             <v-layout row wrap>

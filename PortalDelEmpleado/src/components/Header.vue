@@ -50,7 +50,7 @@ export default {
       sideNav: true,
       menuItems: [
         { icon: 'home', title: 'Home', link: '/' },
-        { icon: 'person', title: 'Perfil', link: '/AboutUs' },
+        { icon: 'info', title: 'Info', link: '/AboutUs' },
         { icon: 'face', title: 'Registrarse', link: '/Register' },
         { icon: 'lock_open', title: 'Entrar', link: '/Login' }
       ]
