@@ -102,20 +102,20 @@
           <peticion-ausencias  transition="slide-y-transition"></peticion-ausencias>
         </v-scale-transition>
         <v-scale-transition v-if="datosEconomicos">
-          <datos-economicos></datos-economicos>
+          <datos-economicos   transition="slide-y-transition"></datos-economicos>
         </v-scale-transition>
         <v-scale-transition v-if="puestoDeTrabajo">
-          <puesto-de-trabajo></puesto-de-trabajo>
+          <puesto-de-trabajo  transition="slide-y-transition"></puesto-de-trabajo>
         </v-scale-transition>
         <v-scale-transition v-if="informacion">
-          <informacion></informacion>
+          <informacion  transition="slide-y-transition"></informacion>
         </v-scale-transition>
 
 
         </div>
-        <div class="barra">
+        <!-- <div class="barra">
           <Barra></Barra>
-        </div>
+        </div> -->
   </div>
 </template>
 

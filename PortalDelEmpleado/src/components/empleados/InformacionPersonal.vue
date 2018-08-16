@@ -10,7 +10,7 @@
         color="cyan accent-4"
       >
         <v-icon>mdi-account</v-icon>
-        <v-toolbar-title class="font-weight-light">Hola {{empleado.nombre}}</v-toolbar-title>
+        <v-toolbar-title class="font-weight-light"></v-toolbar-title>
         <v-spacer></v-spacer>
           <v-btn
             color="purple darken-3"
@@ -22,47 +22,50 @@
             <v-icon v-else>mdi-pencil</v-icon>
           </v-btn>
       </v-toolbar>
+
+
       <v-card-text>
-        {{empleado.nombre}}
         <v-text-field
           :disabled="!isEditing"
           color="white"
-          label="Name"
+          label="Nombre"
+          v-model="empleado.nombre"
         ></v-text-field>
-        {{empleado.puesto}}
-        <v-text-field
-          :disabled="!isEditing"
-          color="white"
-          label="Profesión"
-        ></v-text-field>
-        {{empleado.email}}
         <v-text-field
           :disabled="!isEditing"
           color="white"
           label="Email"
+          v-model="empleado.email"
         ></v-text-field>
-        {{empleado.notas}}
+  
         <v-text-field
           :disabled="!isEditing"
           color="white"
-          label="Experiencia"
+          label="Puesto"
+          v-model="empleado.puesto"
         ></v-text-field>
-        {{empleado.telefono}}
+
+        <v-text-field
+          :disabled="!isEditing"
+          color="white"
+          label="Empresa"
+          v-model="empleado.empresa"
+        ></v-text-field>
         <v-text-field
           :disabled="!isEditing"
           color="white"
           label="Telefono"
+          v-model="empleado.telefono"
         ></v-text-field>
-        <v-autocomplete
+        <v-text-field
           :disabled="!isEditing"
-          :items="states"
-          :filter="customFilter"
           color="white"
-          item-text="name"
-          label="State"
-        ></v-autocomplete>
+          label="Notas"
+          v-model="empleado.notas"
+        ></v-text-field>
       </v-card-text>
-      <v-divider></v-divider>
+
+
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
@@ -73,6 +76,7 @@
           Save
         </v-btn>
       </v-card-actions>
+
       <v-snackbar
         v-model="hasSaved"
         :timeout="2000"
@@ -80,7 +84,7 @@
         bottom
         left
       >
-        Your profile has been updated
+        Tus datos se han actualizado
       </v-snackbar>
     </v-card>
 </div>
@@ -93,36 +97,38 @@ export default {
   },
   data () {
     return {
-      empleado: null,
+      empleado: {
+        nombre: null,
+        email: null,
+        puesto: null,
+        empresa: null,
+        telefono: null,
+        notas: null,
+        id: null
+      },
       hasSaved: false,
       isEditing: null,
-      model: null,
-      states: [
-        { name: 'León', abbr: 'FL', id: 1 },
-        { name: 'Madrid', abbr: 'GA', id: 2 },
-        { name: 'Valladolid', abbr: 'NE', id: 3 },
-        { name: 'Barcelona', abbr: 'CA', id: 4 },
-        { name: 'Sevilla', abbr: 'NY', id: 5 }
-      ]
+      model: null
     }
   },
   async mounted () {
     const id = this.$store.state.route.params.identificador
-    console.log('id : ', id)
     this.empleado = (await EmployeesService.empleado(id)).data
   },
   methods: {
-    customFilter (item, queryText, itemText) {
-      const textOne = item.name.toLowerCase()
-      const textTwo = item.abbr.toLowerCase()
-      const searchText = queryText.toLowerCase()
-
-      return textOne.indexOf(searchText) > -1 ||
-        textTwo.indexOf(searchText) > -1
-    },
-    save () {
+    async save () {
       this.isEditing = !this.isEditing
       this.hasSaved = true
+      console.log(this.hasSaved)
+      try {
+        if (this.hasSaved) {
+          // enviar cambio a servidor
+          await EmployeesService.put(this.empleado)
+        }
+      } catch (error) {
+        //
+        console.log('error al enviar actualización de empleado en front')
+      }
     }
   }
 }

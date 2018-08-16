@@ -9,7 +9,7 @@
   <div>
     <video-bg :sources="['../../static/landing-video.mp4']" img="">
 
-        <img src="http://www.imer.mx/wp-content/uploads/sites/36/logo_inai.png" alt="Vue logo"/>
+        <img src="../../static/portal-del-empleado.png" alt="Vue logo"/>
         <h1>RR-HH</h1>
         <h4>Design by Diego Lujan R.</h4>
         <a href="https://github.com/rengifolu" class="button">Source on GitHub</a>
@@ -37,7 +37,7 @@
               <v-container fill-height>
                 <v-layout align-center>
                   <v-flex>
-                    <h3 class="display-3">Welcome to the site</h3>
+                    <h3 class="display-3">Bienvenido</h3>
 
                     <span class="subheading">Lorem ipsum dolor sit amet, pri veniam forensibus id. Vis maluisset molestiae id, ad semper lobortis cum. At impetus detraxit incorrupte usu, repudiare assueverit ex eum, ne nam essent vocent admodum.</span>
 
@@ -56,7 +56,7 @@
                 </v-layout>
               </v-container>
             </v-jumbotron>
-         </div>
+        </div>
 
 
 </div>

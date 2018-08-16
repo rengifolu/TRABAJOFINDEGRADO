@@ -16,4 +16,7 @@ module.exports = (app) => {
 
   app.get('/empleado/:id',
     EmployeesController.empleado)
+
+  app.put('/empleado/:id',
+    EmployeesController.put)
 }

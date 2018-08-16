@@ -73,6 +73,22 @@ module.exports = {
         error: 'error en busqueda de un empleado'
       })
     }
+  },
+
+  async put (req, res) {
+    console.log('aqui estoy put', req.params.id)
+    try {
+      const empleado = await User.update(req.body, {
+        where: {
+          id: req.params.id
+        }
+      })
+      res.send(empleado)
+    } catch (err) {
+      res.status(500).send({
+        error: 'error en actualización de un empleado'
+      })
+    }
   }
 
 }
