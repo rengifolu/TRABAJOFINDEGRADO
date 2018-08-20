@@ -10,7 +10,7 @@
         color="cyan accent-4"
       >
         <v-icon>mdi-account</v-icon>
-        <v-toolbar-title class="font-weight-light"></v-toolbar-title>
+        <v-toolbar-title class="font-weight-light">Hola {{empleado.nombre}}</v-toolbar-title>
         <v-spacer></v-spacer>
           <v-btn
             color="purple darken-3"

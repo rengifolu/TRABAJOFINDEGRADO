@@ -5,9 +5,9 @@ export default {
   empleados () {
     return Api().get('empleados')
   },
-  /* muestra un empelado */
+  /* muestra un empleado */
   empleado (id) {
-    console.log('identificador :', id)
+    // console.log('identificador :', id)
     return Api().get(`empleado/${id}`)
   },
   put (empleado) {
